@@ -133,8 +133,13 @@ while True:
                                         print("Please enter either 1 or 2!")
                                         continue
                                     break
+                elif menu_choice == 3:
+                    print("\n------- Exiting the program -------")
+                    print("\nThanks for using this program!")
+                    break
                 break
             else:
                 print("Please an integer between the range 1-3!")
                 continue
+    break
 
