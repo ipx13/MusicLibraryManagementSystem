@@ -17,6 +17,11 @@ while True:
             print("Please enter an integer between 1-3!")
         else:
             if menu_choice in [1, 2, 3]:
+                if menu_choice == 1:
+                    print("\n------- Setting up -------")
+                    print("\nPlease add the path of your folder"
+                          "\nNOTE: Use E:\[folder]\[subfolder] formatting")
+                    mainpath = input("\nPath: ")
                 break
             else:
                 print("Please an integer between the range 1-3!")
