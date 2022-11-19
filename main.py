@@ -1,4 +1,5 @@
 import os
+from random import choice
 
 print("\n------- Welcome to LibRandomizer 1.0! -------"
       "\n\nDear music nerds, are you tired of scrolling through your gi-normous library, "
@@ -11,6 +12,8 @@ def menu():
     print("2 - Recommend me something!")
     print("3 - Exit")
     print("-------------------------")
+
+perm_path = []
 
 while True:
     menu()
@@ -49,6 +52,8 @@ while True:
                                     if ch1_conf in [1, 2]:
                                         if ch1_conf == 1:
                                             permpath = mainpath
+                                            perm_path.clear()
+                                            perm_path.append(permpath)
                                             print("\nSuccessfully saved {} as the main directory for randomization!".format(permpath))
                                             break
 
@@ -74,6 +79,9 @@ while True:
                                                     continue
                                                 else:
                                                     print("\nNote: This program can only ask to search deeper ONCE. Please make sure that your artist folders are already accessible.")
+
+                                                    perm_path.clear()
+                                                    perm_path.append(permpath)
                                                     print("\nSuccessfully saved {} as the main directory for randomization!".format(
                                                             permpath))
                                                     break
@@ -88,7 +96,39 @@ while True:
                             continue
                     break
                 elif menu_choice == 2:
-                    print("cowabunga")
+                    list_artists = []
+                    list_artist_albums = []
+                    random_art_path = 0
+
+                    for i in perm_path:
+                        random_art_path = i
+
+                    while True:
+                        print("\n------- Randomization Menu -------")
+                        print("\nWhat would you like to randomize?"
+                              "\n1 - Artists"
+                              "\n2 - Albums")
+
+                        while True:
+                            try:
+                                ch2_rand = int(input("\nI'd like to randomize: "))
+                            except:
+                                print("Please enter and integer!")
+                                continue
+                            else:
+                                if ch2_rand in [1, 2]:
+                                    if ch2_rand == 1:
+                                        for artists in random_art_path:
+                                            list_artists.append(artists)
+                                        print("\nWhy don't you try out listening something from {}?".format(choice(list_artists)))
+                                        break
+
+
+
+
+
+
+
                 break
             else:
                 print("Please an integer between the range 1-3!")
