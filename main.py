@@ -13,7 +13,7 @@ def menu():
     print("3 - Exit")
     print("-------------------------")
 
-perm_path = []
+perm_path = ""
 
 while True:
     menu()
@@ -52,8 +52,7 @@ while True:
                                     if ch1_conf in [1, 2]:
                                         if ch1_conf == 1:
                                             permpath = mainpath
-                                            perm_path.clear()
-                                            perm_path.append(permpath)
+                                            perm_path = permpath
                                             print("\nSuccessfully saved {} as the main directory for randomization!".format(permpath))
                                             break
 
@@ -80,8 +79,7 @@ while True:
                                                 else:
                                                     print("\nNote: This program can only ask to search deeper ONCE. Please make sure that your artist folders are already accessible.")
 
-                                                    perm_path.clear()
-                                                    perm_path.append(permpath)
+                                                    perm_path = permpath
                                                     print("\nSuccessfully saved {} as the main directory for randomization!".format(
                                                             permpath))
                                                     break
@@ -98,10 +96,6 @@ while True:
                 elif menu_choice == 2:
                     list_artists = []
                     list_artist_albums = []
-                    random_art_path = 0
-
-                    for i in perm_path:
-                        random_art_path = i
 
                     while True:
                         print("\n------- Randomization Menu -------")
@@ -118,17 +112,27 @@ while True:
                             else:
                                 if ch2_rand in [1, 2]:
                                     if ch2_rand == 1:
-                                        for artists in random_art_path:
+                                        for artists in os.listdir(perm_path):
                                             list_artists.append(artists)
-                                        print("\nWhy don't you try out listening something from {}?".format(choice(list_artists)))
+                                        print("\nWhy don't you try out listening something from {}?".format(
+                                            choice(list_artists)))
                                         break
+                                    elif ch2_rand == 2:
+                                        for artists in os.listdir(perm_path):
+                                            list_artists.append(artists)
+                                        rand_art = choice(list_artists)
+                                        mod_path = perm_path + "\{}".format(rand_art)
 
+                                        for albums in os.listdir(mod_path):
+                                            list_artist_albums.append(albums)
 
-
-
-
-
-
+                                        print("\nFor a random album, we got", choice(list_artist_albums), "from",
+                                              rand_art + "!")
+                                        break
+                                    else:
+                                        print("Please enter either 1 or 2!")
+                                        continue
+                                    break
                 break
             else:
                 print("Please an integer between the range 1-3!")
