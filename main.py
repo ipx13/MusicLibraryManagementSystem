@@ -31,10 +31,28 @@ while True:
                             for i in os.listdir(mainpath):
                                 print(">> {}".format(i))
 
-                            print("\nHave you reached your artist folders yet?"
+                            print("\nBased on the displayed contents, have you reached your artist folders yet?"
                                   "\n1 - Yes"
-                                  "\n2 - No"
-                                  "\n3 - Exit")
+                                  "\n2 - No")
+
+                            while True:
+                                try:
+                                    ch1_conf = int(input("\nAnswer: "))
+                                except:
+                                    print("Please enter an integer!")
+                                    continue
+                                else:
+                                    if ch1_conf in [1, 2]:
+                                        if ch1_conf == 1:
+                                            print("you said yes")
+                                            break
+                                        elif ch1_conf == 2:
+                                            print("you said no")
+                                            break
+                                    else:
+                                        print("Please enter either 1 or 2!")
+                                        continue
+
                             break
                         else:
                             print("Path not found! Please check your input.")
