@@ -16,9 +16,9 @@ def menu():
 perm_path = ""
 
 while True:
-    menu()
     while True:
         try:
+            menu()
             menu_choice = int(input("\nWhat would you like to do? "))
         except:
             print("Please enter an integer between 1-3!")
@@ -87,12 +87,10 @@ while True:
                                     else:
                                         print("Please enter either 1 or 2!")
                                         continue
-
                             break
                         else:
                             print("Path not found! Please check your input.")
                             continue
-                    break
                 elif menu_choice == 2:
                     list_artists = []
                     list_artist_albums = []
@@ -133,13 +131,14 @@ while True:
                                         print("Please enter either 1 or 2!")
                                         continue
                                     break
+                        break
                 elif menu_choice == 3:
                     print("\n------- Exiting the program -------")
                     print("\nThanks for using this program!")
                     break
-                break
             else:
                 print("Please an integer between the range 1-3!")
                 continue
+        continue
     break
 
