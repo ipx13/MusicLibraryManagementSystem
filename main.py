@@ -21,7 +21,24 @@ while True:
                     print("\n------- Setting up -------")
                     print("\nPlease add the path of your folder"
                           "\nNOTE: Use E:\[folder]\[subfolder] formatting")
-                    mainpath = input("\nPath: ")
+
+                    while True:
+                        mainpath = input("\nPath: ")
+
+                        if os.path.exists(mainpath):
+                            print("\nDisplaying folder contents:")
+                            print("> {}".format(mainpath))
+                            for i in os.listdir(mainpath):
+                                print(">> {}".format(i))
+
+                            print("\nHave you reached your artist folders yet?"
+                                  "\n1 - Yes"
+                                  "\n2 - No"
+                                  "\n3 - Exit")
+                            break
+                        else:
+                            print("Path not found! Please check your input.")
+                            continue
                 break
             else:
                 print("Please an integer between the range 1-3!")
