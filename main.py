@@ -1,9 +1,12 @@
 import os
 
-print("Welcome to LibRandomizer 1.0! Dear music nerds, are you tired of scrolling through your gi-normous library, looking for something to listen to? Add a folder containing your music library, and we'll fetch a random personalized recommendation for you!")
+print("\n------- Welcome to LibRandomizer 1.0! -------"
+      "\n\nDear music nerds, are you tired of scrolling through your gi-normous library, "
+      "\nlooking for something to listen to? Add a folder containing your music library"
+      "\nand we'll fetch a random personalized recommendation for you!")
 
 def menu():
-    print("\nMenu: ")
+    print("\n------- Main Menu -------")
     print("1 - Get started")
     print("2 - Recommend me something!")
     print("3 - Exit")
@@ -44,10 +47,32 @@ while True:
                                 else:
                                     if ch1_conf in [1, 2]:
                                         if ch1_conf == 1:
-                                            print("you said yes")
+                                            permpath = mainpath
+                                            print("\nSuccessfully saved {} as the main directory for randomization!".format(permpath))
                                             break
+
                                         elif ch1_conf == 2:
-                                            print("you said no")
+                                            while True:
+                                                print("\nChoose a subfolder to explore:")
+                                                for i in os.listdir(mainpath):
+                                                    print("> {}".format(i))
+
+                                                print("\nType the folder name")
+                                                explore_fldr = input("Explore: ")
+                                                permpath = mainpath + "\{}".format(explore_fldr)
+
+                                                if os.path.exists(permpath):
+                                                    print("\nDisplaying folder contents:")
+                                                    print("> {}".format(permpath))
+                                                    for i in os.listdir(permpath):
+                                                        print(">> {}".format(i))
+
+                                                    print("\nNote: This program can only ask to search deeper ONCE. Please make sure that your artist folders are already accessible.")
+                                                    print("\nSuccessfully saved {} as the main directory for randomization!".format(permpath))
+                                                    break
+                                                else:
+                                                    print("Path not found! Please check your input.")
+                                                    continue
                                             break
                                     else:
                                         print("Please enter either 1 or 2!")
